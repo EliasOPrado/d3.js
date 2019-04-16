@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+</head>
+<style>
+    .big {
+        /*this class will be added into the method .classed()*/
+        font-size: 24px;
+    }
+
+</style>
+
+<body>
+   <p>My name is <span class="name"></span></p>
+    <ul class="items">
+        <li>This is an item</li>
+        <li>This is an item</li>
+        <li>This is an item</li>
+        <li>This is an item</li>
+        <li>This is an item</li>
+    </ul>
+
+    <script>
+        /* < d3.selectAll('li:nth-child(even)') /*select() will select only the first or a specific element, thus selectAll() will select all elements as li*/
+        /*< .style('color', 'red') /*will bring style for the selected element*/
+        /*< .html('This is an even number') /*will change what is inside the selected/li element */
+        /*<.classed('big', true); /*will add an class declared on css but not in html.*/
+        var numArray = [12, 20, 33, 40, 55, 60, 75, 80, 90];
+        
+        var name = 'Oliver';
+        
+        var li = d3.select('body').selectAll('.items li')
+            .data(numArray) // var numArray
+            .text(function(d) {
+                return 'this is item number ' + d;
+            })
+
+        li.enter().append('li')
+            .text(function(d) {
+                return 'this is item number ' + d;
+            });
+        
+        li.exit().remove();
+        
+        d3.select('.name').text(name);
+
+        /* d3.selectAll('.items li')//select all li elements
+         .data(numArray)//call and bind var numArray
+         .style('font-size', function(d){//apply the data as a number+px e.g 12px as a fontsize.
+             return d + 'px';
+         })
+         */
+
+    </script>
+</body>
+
+</html>
