@@ -11,7 +11,7 @@
     <div id="chart"></div>
 
     <script>
-        var myData = [100, 125, 320, 440, 500, 250, 320, 720, 50];
+        var myData = [100, 125, 320, 440, 500, 250, 320, 720, 50, 1000, 730, 355, 444, 124, 455];
 
         var height = 500;
         var width = 500;
@@ -29,7 +29,7 @@
         
         var colors = d3.scaleLinear()
         .domain([0, myData.length])
-        .range(['#0ee90', '#30c230'])
+        .range(['red', 'yellow'])
 
          d3.select('#chart')
             .append('svg')
@@ -39,7 +39,9 @@
             .selectAll('rect')
             .data(myData)
             .enter().append('rect')
-            .style('fill', 'lightgreen')
+            .style('fill', function(d, i){
+             return colors(i);
+         })
             .attr('width', xScale.bandwidth())
             .attr('height', function(d){
                 return yScale(d);
