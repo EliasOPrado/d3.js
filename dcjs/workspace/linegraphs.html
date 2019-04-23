@@ -30,7 +30,7 @@
     </div>
 
     <script>
-    queue()
+    d3.queue()
         .defer(d3.json, "dcjs/workspace/data/transactions.json")
         .await(makeGraphs);
     function makeGraphs(error, transactionsData) {
